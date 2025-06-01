@@ -71,11 +71,18 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     // @ModelAttribute를 생략해도 결국 위와 같은 애노테이션이 붙은 것처럼 동작하는 것이기 때문에 자동등록도 똑같이 동작한다.
     public String addItemV4(Item item) {
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    // @ModelAttribute를 생략해도 결국 위와 같은 애노테이션이 붙은 것처럼 동작하는 것이기 때문에 자동등록도 똑같이 동작한다.
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
